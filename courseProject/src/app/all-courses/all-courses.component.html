@@ -1,0 +1,32 @@
+<div class="container">
+    <!-- Filter Form -->
+    <form [formGroup]="filterForm" class="filter-form">
+        <input formControlName="name" class="form-control" placeholder="Course Name" />
+        <select formControlName="category" class="form-control">
+            <option [value]="''">Select a Category</option>
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+        </select>
+        <div class="learning-way">
+            <label>Learning Way:</label>
+            <label><input type="radio" formControlName="learningWay" [value]="''"> All</label>
+            <label><input type="radio" formControlName="learningWay" [value]="0"> Frontal</label>
+            <label><input type="radio" formControlName="learningWay" [value]="1"> Zoom</label>
+        </div>
+    </form>
+
+    <!-- Course Grid -->
+    <div class="course-grid">
+        <div *ngFor="let c of filteredCourses" class="course-card">
+            <app-mini-course-details [course]='c'></app-mini-course-details>
+            <button *ngIf="isLecturer" class="edit-button" (click)="this.course = c">Edit Details</button>
+        </div>
+    </div>
+
+    <!-- Edit Course Section -->
+    <div class="edit-course-overlay" *ngIf="course">
+        <app-edit-course [course]="course" (saveEvent)="onSave()"></app-edit-course>
+    </div>
+</div>
+
+<!-- Add Course Button -->
+<button  *ngIf="isLecturer" class="add-course-button" (click)="goAdd()">Add Course</button>
