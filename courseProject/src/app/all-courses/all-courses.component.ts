@@ -21,9 +21,8 @@ export class AllCoursesComponent {
   public courses: Course[] = [];
   public filteredCourses: Course[] = [];
   public categories: Category[] = [];
-  public isLecturer = sessionStorage.getItem('isLecturer') === 'true';
   public filterForm!: FormGroup;
-  public course?: Course;
+  public isLecturer = sessionStorage.getItem('isLecturer') === 'true';
 
   constructor(
     private router: Router,
@@ -68,13 +67,6 @@ export class AllCoursesComponent {
       (this.filterForm.controls['category'].value === '' || course.categoryId == this.filterForm.controls['category'].value) &&
       (this.filterForm.controls['learningWay'].value === '' || course.learningWay == this.filterForm.controls['learningWay'].value)
     );
-  }
-
-  onSave() {
-    this.course = undefined;
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/allCourses']);
-    });
   }
 
   goAdd() {

@@ -18,13 +18,7 @@
     <div class="course-grid">
         <div *ngFor="let c of filteredCourses" class="course-card">
             <app-mini-course-details [course]='c'></app-mini-course-details>
-            <button *ngIf="isLecturer" class="edit-button" (click)="this.course = c">Edit Details</button>
         </div>
-    </div>
-
-    <!-- Edit Course Section -->
-    <div class="edit-course-overlay" *ngIf="course">
-        <app-edit-course [course]="course" (saveEvent)="onSave()"></app-edit-course>
     </div>
 </div>
 

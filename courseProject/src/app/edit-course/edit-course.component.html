@@ -35,9 +35,12 @@
     </div>
     <br>
     <label for="syllabus">The subjects of the lesson:</label>
-    <ng-container *ngFor="let input of inputs; let i = index">
+    <!-- <ng-container *ngFor="let input of inputs; let i = index">
         <input [value]="course?.syllabus" (input)="onInput($event, i)" class="form-control">
-        <!-- <div class="alert alert-danger" *ngIf="inputs.length<2">required!!</div> -->
+        -- <div class="alert alert-danger" *ngIf="inputs.length<2">required!!</div> --
+    </ng-container> -->
+    <ng-container *ngFor="let input of inputs; let i = index">
+        <input [value]="input" (input)="onInput($event, i)" class="form-control">
     </ng-container>
     <ng-container *ngIf="editClicked && editForm.controls['syllabus'].errors as syllabusError">
         <p *ngIf="syllabusError['required']">This field is required</p>
@@ -78,4 +81,5 @@
         </ng-container>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!editForm.valid">Save Changes</button>
+    <button type="button" (click)="cancel()" class="btn btn-primary">Cancel</button>
 </form>

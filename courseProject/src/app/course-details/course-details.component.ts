@@ -4,15 +4,16 @@ import { Category } from '../entities/category.model';
 import { CommonModule } from '@angular/common';
 import { CategoryService } from '../services/category.service';
 import { LearningWayIconPipe } from '../learning-way-icon.pipe';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from '../services/courses.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { EditCourseComponent } from '../edit-course/edit-course.component';
 
 @Component({
   selector: 'app-course-details',
   standalone: true,
-  imports: [CommonModule, LearningWayIconPipe, MatFormFieldModule, MatInputModule],
+  imports: [CommonModule, LearningWayIconPipe, MatFormFieldModule, MatInputModule, EditCourseComponent],
   templateUrl: './course-details.component.html',
   styleUrls: ['./course-details.component.css']
 })
@@ -20,8 +21,10 @@ export class CourseDetailsComponent {
   public course!: Course;
   public category!: Category;
   public isInComingWeek = false;
+  public isLecturer = sessionStorage.getItem('isLecturer') === 'true';
+  public editClicked=false;
 
-  constructor(private route: ActivatedRoute, private categoryService: CategoryService, private courseService: CourseService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private categoryService: CategoryService, private courseService: CourseService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -52,5 +55,16 @@ export class CourseDetailsComponent {
     const courseStartDate = new Date(this.course.start);
     const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
     this.isInComingWeek = courseStartDate >= today && courseStartDate <= nextWeek;
+  }
+
+  goAdd() {
+    this.router.navigate(['/addCourse']);
+  }
+
+  onSave() {
+    this.editClicked=false;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([`/courseDetails/${this.course.id}`]);
+    });
   }
 }

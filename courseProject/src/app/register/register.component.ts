@@ -4,6 +4,7 @@ import { UserLoginService } from '../services/userLogin.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -41,15 +42,31 @@ export class RegisterComponent {
     const address = this.registerForm.controls['address'].value;
     const email = this.registerForm.controls['email'].value;
     const password = this.registerForm.controls['password'].value;
-    this.userLoginService.addUser(userName, address, email, password).subscribe({
+    this.userLoginService.checkLogin(userName, password).subscribe({
       next: () => {
+        Swal.fire({
+          icon: "error",
+          title: '<p> Your account already exists</p>',
+          text: `You are currently logged in as ${userName}`,
+          footer: '<a href="/allCourses">Go to watch our courses</a>'
+        });
         sessionStorage.setItem('userDetails', JSON.stringify({userName, address, email, password}));
         sessionStorage.setItem('isLecturer', 'false');
-        this.router.navigate(['/allCourses']);
+        // this.router.navigate(['/allCourses']);
       },
-      error: (err) => {
-        console.error(err);
+      error: () => {
+        this.userLoginService.addUser(userName, address, email, password).subscribe({
+          next: () => {
+            sessionStorage.setItem('userDetails', JSON.stringify({userName, address, email, password}));
+            sessionStorage.setItem('isLecturer', 'false');
+            this.router.navigate(['/allCourses']);
+          },
+          error: (err) => {
+            console.error(err);
+          }
+        });
       }
     });
+    
   }
 }

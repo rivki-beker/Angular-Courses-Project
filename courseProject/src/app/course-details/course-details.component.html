@@ -1,16 +1,20 @@
 <div class="course-details-container">
-    <img [src]="course.image"/>
-    <h3>{{course.name}}</h3>
-    <p>{{category.name}}</p><img [src]="category.icon"/>
-    <p>{{course.learningWay}}</p>
-    <span [ngClass]="'learning-mode-icon ' + (course.learningWay | learningWayIcon)"></span>
-    <mat-form-field appearance="fill" [ngClass]="{'coming-week': isInComingWeek}">
-      <mat-label>Start Date</mat-label>
-      <input matInput [value]="course.start" [readonly]="true" [ngClass]="{'coming-week-input': isInComingWeek}">
-    </mat-form-field>
-    <p>Syllabus</p>
-    <div *ngFor="let topic of course.syllabus">
-      <img src="icon"/>
-      <p>{{topic}}</p>
-    </div>
-  </div>  
+  <img [src]="course.image" />
+  <h3>{{course.name}}</h3>
+  <p>{{category.name}}</p><img [src]="category.icon" class="round"/>
+  <p>{{course.learningWay}}</p>
+  <span [ngClass]="'learning-mode-icon ' + (course.learningWay | learningWayIcon)"></span>
+  <mat-form-field appearance="fill" [ngClass]="{'coming-week': isInComingWeek}">
+    <mat-label>Start Date</mat-label>
+    <input matInput [value]="course.start" [readonly]="true" [ngClass]="{'coming-week-input': isInComingWeek}">
+  </mat-form-field>
+  <p>Syllabus</p>
+  <div *ngFor="let topic of course.syllabus">
+    <img src="icon" />
+    <p>{{topic}}</p>
+  </div>
+  <button *ngIf="this.isLecturer" class="edit-button" (click)="this.editClicked = true">Edit Details</button>
+</div>
+<div class="edit-course-overlay" *ngIf="editClicked">
+  <app-edit-course [course]="course" (saveEvent)="onSave()"></app-edit-course>
+</div>

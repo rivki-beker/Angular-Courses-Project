@@ -5,12 +5,12 @@
   }
   
   .frontal-icon {
-    background-color: blue;
+    background: url("../../assets/categories icons/img1.jpg");
     /* Frontal mode icon styling */
   }
   
   .zoom-icon {
-    background-color: green;
+    background: url("../../assets/categories icons/img2.jpg");
     /* Zoom mode icon styling */
   }
   
@@ -45,7 +45,7 @@
 }
 
 .course-card button {
-  background-color: #007bff;
+  background-color: #081142;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -55,7 +55,13 @@
   transition: background-color 0.3s ease;
 }
 
-.course-card button:hover {
-  background-color: #0056b3;
+.course-card button:hover,.btn-primary {
+  background-color: #081142;
+  border: none;
+}
+
+.round{
+  width: 70px;
+    border-radius: 50px;
 }
   

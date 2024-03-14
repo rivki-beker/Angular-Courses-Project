@@ -18,6 +18,7 @@
   
   .learning-way {
     margin-top: 10px;
+    color: white;
   }
   
   .course-grid {
@@ -33,18 +34,7 @@
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
-  .edit-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #4caf50;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
+ 
   .add-course-button {
     position: fixed;
     bottom: 20px;
@@ -57,28 +47,14 @@
     border-radius: 4px;
   }
 
-  .edit-course-overlay {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000; /* Ensure the edit component is above other content */
-    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent background */
-    padding: 20px;
-    max-height: calc(100vh - 40px); /* Adjust as needed */
-    overflow-y: auto; /* Allow vertical scrolling */
-    width: 50vw;
-  }
-  
   .container {
-    position: relative; /* Required for absolute positioning */
+    position: relative;
   }
   
   body {
-     /* background-image: url('your-background-image.jpg'); Replace with your background image */
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Fixed background */
+    background-attachment: fixed;
   }
   
   

@@ -11,11 +11,11 @@ namespace serverProject.Controllers
     public class CourseController : ControllerBase
     {
         private static List<Course> courses = new List<Course>  {
-                new Course(1, "Introduction to Programming", 1, 12, new DateTime(2022, 3, 15), new List<string> {"Basic concepts", "Data types", "Control structures"}, LearningWay.Zoom, 1, "C:\\Users\\user\\Documents\\תכנות\\courseProject\\src\\assets\\img1.JPG"),
-                new Course(2, "Artificial Intelligence Fundamentals", 2, 10, new DateTime(2022, 4, 10), new List<string> {"Machine learning", "Neural networks", "Deep learning"}, LearningWay.frontal, 2, "C:\\Users\\user\\Documents\\תכנות\\courseProject\\src\\assets\\img2.JPG"),
-                new Course(3, "Financial Management", 3, 8, new DateTime(2022, 4, 25), new List<string> {"Budgeting", "Investment analysis", "Risk management"}, LearningWay.Zoom, 3, "C:\\Users\\user\\Documents\\תכנות\\courseProject\\src\\assets\\img3.JPG"),
-                new Course(4, "Introduction to Psychology", 4, 15, new DateTime(2022, 5, 5), new List<string> {"Behavioral psychology", "Cognitive psychology", "Developmental psychology"}, LearningWay.frontal, 4, "C:\\Users\\user\\Documents\\תכנות\\courseProject\\src\\assets\\img4.JPG"),
-                new Course(5, "Graphic Design Basics", 5, 6, new DateTime(2022, 5, 20), new List<string> {"Color theory", "Typography", "Layout design"}, LearningWay.Zoom, 5, "C:\\Users\\user\\Documents\\תכנות\\courseProject\\src\\assets\\img5.JPG")
+                new Course(1, "Advanced photography", 1, 12, new DateTime(2022, 3, 15), new List<string> { "Lighting", "Composition", "Post-processing"}, LearningWay.Zoom, 1, "../../assets/courses images/img1.jpg"),
+                new Course(2, "Development of bots and automations", 2, 10, new DateTime(2022, 4, 10), new List<string> { "Introduction to automation", "Building bots", "Automating tasks"}, LearningWay.frontal, 2, "../../assets/courses images/img2.jpg"),
+                new Course(3, "Sound and studio productions", 3, 8, new DateTime(2022, 4, 25), new List<string> { "Sound editing", "Music production", "Mixing and mastering"}, LearningWay.Zoom, 3, "../../assets/courses images/img3.jpg"),
+                new Course(4, "NLP presuppositions", 4, 15, new DateTime(2022, 5, 5), new List<string> { "NLP presuppositions", "Communication models", "State management"}, LearningWay.frontal, 4, "../../assets/courses images/img4.jpg"),
+                new Course(5, "Architectural rendering", 5, 6, new DateTime(2022, 5, 20), new List<string> { "3D modeling", "Texturing", "Rendering"}, LearningWay.Zoom, 5, "../../assets/courses images/img5.jpg")
             };
         private static int counter = 0;
         // GET: api/<CourseController>
@@ -47,8 +47,8 @@ namespace serverProject.Controllers
             var c = courses.Find(c => c.id == id);
             if (c is null)
             {
-                c.id = ++counter;
-                courses.Add(c);
+                value.id = ++counter;
+                courses.Add(value);
             }
             else
             {

@@ -65,7 +65,7 @@ export class LoginComponent {
           this.courseService.getCourses().subscribe(
             {
               next: (res) => {
-                if (!(res.find(x => x.name == this.loginForm.controls['courseName'].value)?.lecturerId == lecturer.id)) {
+                if (res.find(x => x.name == this.loginForm.controls['courseName'].value)?.lecturerId != lecturer.id) {
                   this.incorrectCourse = true;
                   this.loginForm.controls['courseName'].setValue('');
                 }
@@ -79,9 +79,6 @@ export class LoginComponent {
                 console.error(err);
               }
             });
-          // sessionStorage.setItem('userDetails', JSON.stringify(lecturer));
-          // sessionStorage.setItem('isLecturer', 'true');
-          // this.router.navigate(['/allCourses']);
         },
         (error) => {
           if (error == 'User not found!') {
@@ -96,5 +93,8 @@ export class LoginComponent {
       );
     }
 
+  }
+  lectueClicked(){
+    this.isLecture=true;
   }
 }

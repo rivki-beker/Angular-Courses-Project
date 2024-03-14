@@ -11,11 +11,11 @@ namespace serverProject.Controllers
     public class CategoryController : ControllerBase
     {
         private static List<Category> categories = new List<Category> {
-                new Category { id = 1, name = "Programming", icon = "code" },
-                new Category { id = 2, name = "Design", icon = "paint-brush" },
-                new Category { id = 3, name = "Business", icon = "briefcase" },
-                new Category { id = 4, name = "Language", icon = "language" },
-                new Category { id = 5, name = "Health", icon = "heart" }
+                new Category { id = 1, name = "Photo", icon = "../../assets/categories icons/img1.jpg" },
+                new Category { id = 2, name = "Bots", icon = "../../assets/categories icons/img2.jpg" },
+                new Category { id = 3, name = "Sound", icon = "../../assets/categories icons/img3.jpg" },
+                new Category { id = 4, name = "Psychology", icon = "../../assets/categories icons/img4.jpg" },
+                new Category { id = 5, name = "Architecture", icon = "../../assets/categories icons/img5.jpg" }
         };
         private static int counter = 0;
         // GET: api/<CategoryController>

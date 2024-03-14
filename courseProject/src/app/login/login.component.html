@@ -1,4 +1,5 @@
 <form [formGroup]="loginForm" (ngSubmit)="login()" class="hashadchan-login-form">
+    <button type="button" class="btn btn-primary lecture-button" (click)="lectueClicked()">Enter as a lecturer</button>
     <div class="form-group">
         <input type="text" class="form-control" placeholder="Name" formControlName="name">
         <ng-container *ngIf="loginClicked && loginForm.controls['name'].errors as nameError">
@@ -14,10 +15,9 @@
             <p class="error-message" *ngIf="incorrectPassword">The password isn't correct</p>
         </ng-container>
     </div>
-    <button class="btn btn-primary lecture-button" (click)="isLecture=true">Enter as a lecturer</button>
     <div *ngIf="isLecture" class="form-group">
         <input type="text" class="form-control" placeholder="Course Name" formControlName="courseName">
-        <ng-container *ngIf="loginClicked && incorrectCourse">
+        <ng-container *ngIf=" loginClicked && incorrectCourse">
             <p class="error-message">The course name isn't correct</p>
         </ng-container>
     </div>

@@ -26,6 +26,7 @@ export class EditCourseComponent {
   editForm!: FormGroup;
   categories!: Category[];
   editClicked: boolean = false;
+  inputs!: string[];
 
   constructor(private route: ActivatedRoute, private router: Router, private categoryService: CategoryService, private courseService: CourseService) { }
 
@@ -41,35 +42,46 @@ export class EditCourseComponent {
         }
       })
 
-
     this.editForm = new FormGroup({
       id: new FormControl(this.course?.id),
       name: new FormControl(this.course?.name, [Validators.required, Validators.minLength(3)]),
-      categoryId: new FormControl(this.categories?.find(x => x.id == this.course?.categoryId)?.name, [Validators.required, Validators.minLength(3)]),
-      countOfLessons: new FormControl(this.course?.countOfLessons, [Validators.required, Validators.minLength(3)]),
+      categoryId: new FormControl(this.categories?.find(x => x.id == this.course?.categoryId)?.name, Validators.required),
+      countOfLessons: new FormControl(this.course?.countOfLessons, Validators.required),
       start: new FormControl(this.course?.start, [Validators.required, Validators.minLength(3)]),
-      syllabus: new FormControl(this.course?.syllabus, [Validators.required, Validators.minLength(3)]),
-      learningWay: new FormControl(this.course?.learningWay, [Validators.required, Validators.minLength(3)]),
-      lecturerId: new FormControl(this.course?.lecturerId, [Validators.required, Validators.minLength(3)]),
+      syllabus: new FormControl(this.course?.syllabus),
+      learningWay: new FormControl(this.course?.learningWay, Validators.required),
+      lecturerId: new FormControl(this.course?.lecturerId, Validators.required),
       image: new FormControl(this.course?.image, [Validators.required, Validators.minLength(3)])
     });
+
+    if(this.course)
+    {
+      this.inputs=this.course.syllabus;
+      this.inputs.push('');
+    }
+    else
+    this.inputs=[''];
   }
-  inputs: string[] = [''];
-  length: number = this.inputs.length;
   onInput(event: Event, index: number): void {
     const target = event.target as HTMLInputElement;
     const value = target.value.trim();
-    if (value && index === this.inputs.length - 1) {
-      this.inputs.push(value);
+    if (value.length == 1 && index === this.inputs.length - 1) {
+      this.inputs.pop();
+      this.inputs.push(value,'');
+      target.value='';
     } else if (!value && index < this.inputs.length - 1) {
-      this.inputs.splice(index + 1, 1);
+      this.inputs.splice(index, 1);
     }
-    this.length = this.inputs.length;
-    console.log(this.inputs)
+    else
+      this.inputs[index] = value;
+  }
+  cancel() {
+    this.saveEvent.emit();
   }
   save(): void {
     this.editClicked = true;
-
+    this.inputs.pop();
+    this.editForm.controls['syllabus'].setValue(this.inputs);
     this.courseService.updateCourse(this.editForm.value).subscribe(
       () => {
         Swal.fire({

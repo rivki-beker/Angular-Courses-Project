@@ -11,14 +11,16 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })
-export class NavBarComponent implements OnInit {
-  public isLecturer!:boolean;
-  public isConnected!:boolean;
+export class NavBarComponent {
 
   constructor(private router: Router){}
-  ngOnInit() {
-    this.isConnected=sessionStorage.getItem('userDetails')!=null;
-    this.isLecturer = sessionStorage.getItem('isLecturer') === 'true';
+
+  isConnected(){
+    return sessionStorage.getItem('userDetails')!=null;
+  }
+
+  isLecturer(){
+    return sessionStorage.getItem('isLecturer') === 'true';
   }
 
   login()

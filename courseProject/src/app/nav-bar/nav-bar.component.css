@@ -1,5 +1,6 @@
 .mat-toolbar {
-    background-color: #2196f3; /* כחול */
+    background-color: #b5125e;
+    color: white;
   }
   
   .brand {
@@ -13,8 +14,10 @@
   }
   
   .mat-raised-button {
-    background-color: #ffc107; /* צהוב מוסטרד */
-    color: #212121; /* שחור */
     margin-left: 10px;
     margin-right: 10px;
   }
+
+  .mdc-button__label {
+    color: white;
+}
