@@ -8,11 +8,9 @@
 }
 .content {
     flex: 1;
-    background-color: #081142;
-    width: 100vw;
 }
 .footer {
-    background-color: #b5125e;
+    background-color: #870b45;
     color: #fff;
     padding: 20px;
     text-align: center;

@@ -24,9 +24,6 @@ export class MiniCourseDetailsComponent {
 
   public isConnected=sessionStorage.getItem('userDetails');
 
-//   const userDetailsString = 
-// const userDetails = userDetailsString ? JSON.parse(userDetailsString) : null;
-
   constructor(private router: Router, private categoryService: CategoryService) { }
 
   ngOnInit() {

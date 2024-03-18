@@ -1,6 +1,7 @@
 .edit-form {
-    max-width: 400px;
+    max-width: 500px;
     margin: auto;
+    padding: 50px;
 }
 
 .form-group {
@@ -21,7 +22,8 @@
 }
 
 .btn-primary {
-    background-color: #007bff;
+    background-color: #081142;
+    margin-right: 20px;
     border: none;
     color: #fff
 }

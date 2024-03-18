@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Course, LearningWay } from '../entities/course.model';
+import { Course } from '../entities/course.model';
 import { CommonModule } from '@angular/common';
 import { CategoryService } from '../services/category.service';
 import { CourseService } from '../services/courses.service';
@@ -93,7 +93,6 @@ export class EditCourseComponent {
       },
       (error) => {
         console.error('Error occurred while updating course:', error);
-        // Handle error (e.g., show an error message)
       }
     );
   }

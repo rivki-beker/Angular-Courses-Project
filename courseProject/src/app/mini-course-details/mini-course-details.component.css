@@ -5,21 +5,19 @@
   }
   
   .frontal-icon {
-    background: url("../../assets/categories icons/img1.jpg");
-    /* Frontal mode icon styling */
+    background-image: url(../../assets/learning\ icons/img1.png);
+    background-size: cover;
   }
   
   .zoom-icon {
-    background: url("../../assets/categories icons/img2.jpg");
-    /* Zoom mode icon styling */
+    background-image: url(../../assets/learning\ icons/img2.png);
+    background-size: cover;
   }
   
   .default-icon {
     background-color: gray;
-    /* Default icon styling */
   }
-
-  /* CSS for Course Card */
+  
 .course-card {
   background-color: #fff;
   border-radius: 8px;
@@ -62,6 +60,6 @@
 
 .round{
   width: 70px;
-    border-radius: 50px;
+  border-radius: 50px;
 }
   

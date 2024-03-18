@@ -35,10 +35,6 @@
     </div>
     <br>
     <label for="syllabus">The subjects of the lesson:</label>
-    <!-- <ng-container *ngFor="let input of inputs; let i = index">
-        <input [value]="course?.syllabus" (input)="onInput($event, i)" class="form-control">
-        -- <div class="alert alert-danger" *ngIf="inputs.length<2">required!!</div> --
-    </ng-container> -->
     <ng-container *ngFor="let input of inputs; let i = index">
         <input [value]="input" (input)="onInput($event, i)" class="form-control">
     </ng-container>
@@ -53,12 +49,10 @@
         <label>
             <input type="radio" formControlName="learningWay" [value]="0"> Frontal
         </label>
+        <br />
         <label>
             <input type="radio" formControlName="learningWay" [value]="1"> Zoom
         </label>
-        <!-- <label *ngFor="let way of ['frontal', 'Zoom']">
-            <input type="radio" [value]="way.indexOf" formControlName="learningWay"> {{ way }}
-        </label> -->
         <ng-container *ngIf="editClicked && editForm.controls['learningWay'].errors as learningWayError">
             <p *ngIf="learningWayError['required']">Please select a learning way</p>
             <p *ngIf="learningWayError['minlength']">This field must be at least 3 characters</p>

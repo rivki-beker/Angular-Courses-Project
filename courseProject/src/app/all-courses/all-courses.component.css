@@ -1,5 +1,9 @@
 .container {
-    padding: 20px;
+  padding: 10vw;
+  padding-top:20px ;
+  background-color: #081142;
+  min-width: 100vw;
+  position: relative;
   }
   
   .filter-form {
@@ -14,11 +18,6 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
-  .learning-way {
-    margin-top: 10px;
-    color: white;
   }
   
   .course-grid {
@@ -40,15 +39,11 @@
     bottom: 20px;
     right: 20px;
     padding: 15px 30px;
-    background-color: #4caf50;
+    background-color: #870b45;
     border: none;
     color: #fff;
     cursor: pointer;
     border-radius: 4px;
-  }
-
-  .container {
-    position: relative;
   }
   
   body {
@@ -56,5 +51,26 @@
     background-position: center;
     background-attachment: fixed;
   }
+
+  .learning-way-options {
+    display: flex;
+    justify-content: space-around;
+  }
   
+  .learning-way-option {
+    color: white;
+    margin-left: 10px;
+    background-color: #870b45;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
   
+  .learning-way-option input[type="radio"] {
+    display: none;
+  }
+  
+  .learning-way-option input[type="radio"]:checked + label {
+    background-color: #dc3545;
+    color: white;
+  }

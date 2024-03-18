@@ -1,6 +1,10 @@
 .hashadchan-login-form {
-    max-width: 400px;
+    max-width: 500px;
     margin: auto;
+    margin-top: 100px;
+    background-color: white;
+    padding:5vw;
+    border-radius: 10px;
   }
   
   .form-group {
@@ -13,16 +17,16 @@
   }
   
   .btn-primary {
-    background-color: #b5125e;
-    border-color: #b5125e;
+    background-color: #081142;
+    border-color: #050d3a;
     color: #fff;
   }
   
   .btn-primary:hover {
-    background-color: #b5125e;
-    border-color: #b5125e;
+    background-color: #050d3a;
+    border-color: #050d3a;
   }
   
   .lecture-button {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }  

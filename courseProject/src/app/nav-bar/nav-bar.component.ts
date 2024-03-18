@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,6 +21,10 @@ export class NavBarComponent {
 
   isLecturer(){
     return sessionStorage.getItem('isLecturer') === 'true';
+  }
+
+  home(){
+    this.router.navigate(['/home']);
   }
 
   login()

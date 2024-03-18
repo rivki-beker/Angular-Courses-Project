@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component} from '@angular/core';
 import { Course } from '../entities/course.model';
 import { Category } from '../entities/category.model';
 import { CommonModule } from '@angular/common';

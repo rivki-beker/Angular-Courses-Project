@@ -25,9 +25,7 @@ export class RegisterComponent {
       name: new FormControl("", [Validators.required, Validators.minLength(3)]),
       address: new FormControl("", [Validators.required, Validators.minLength(3)]),
       email: new FormControl("", [Validators.required, Validators.email]),
-      password: new FormControl("", [Validators.required, Validators.minLength(8)
-        // ,Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d).{8,}$')
-      ])
+      password: new FormControl("", [Validators.required, Validators.minLength(8)])
     });
 
     this.route.params.subscribe(params => {
@@ -52,7 +50,6 @@ export class RegisterComponent {
         });
         sessionStorage.setItem('userDetails', JSON.stringify({userName, address, email, password}));
         sessionStorage.setItem('isLecturer', 'false');
-        // this.router.navigate(['/allCourses']);
       },
       error: () => {
         this.userLoginService.addUser(userName, address, email, password).subscribe({

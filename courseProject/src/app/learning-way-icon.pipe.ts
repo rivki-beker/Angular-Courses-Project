@@ -9,11 +9,11 @@ export class LearningWayIconPipe implements PipeTransform {
 
   transform(value: LearningWay): string {
     if (value === LearningWay.frontal) {
-      return 'frontal-icon'; // Assume 'frontal-icon' is the icon class for frontal mode
+      return 'frontal-icon';
     } else if (value === LearningWay.Zoom) {
-      return 'zoom-icon'; // Assume 'zoom-icon' is the icon class for zoom mode
+      return 'zoom-icon';
     } else {
-      return 'default-icon'; // Default icon class if learning mode is not recognized
+      return 'default-icon';
     }
   }
 }
